@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <script>
+    function validateForm() {
+      let x = document.forms["myForm"]["fname"].value;
+      if (x == "") {
+        alert("Relatório Armazenado no Banco de Dados fake que vc não fez");
+        return false;
+      }
+    }
+    
+  </script> -->
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+  <script src='script.js'></script>
+</head>
+
+<body>
+    <input type="checkbox" id="toggle" name="toggle">
+
+    <ul class="navigation-menu">
+        <h3>SEU PERFIL</h3>
+        <img class="perfil_menu" src="https://media.istockphoto.com/id/866574950/pt/vetorial/man-young-character-male-profile-business-cartoon.jpg?s=170667a&w=0&k=20&c=DDWbotIKXee8xfS846X6lBczgZ6oQlv7Gz76x-eTlR8=" alt="">
+        <h3 class="topico">MENU DE NAVEGAÇÃO</h3>
+        <li class="li_move"><a href="#">Página Inicial</a></li>
+        <li class="li_move"><a href="#">Cadastro</a></li>
+        <li class="li_move"><a href="#">Minha conta</a></li>
+        <li class="li_move"><a href="#">Ajuda</a></li>
+    </ul>
+
+    <menu>
+        <img class="logo-oi" src="https://www.oi.com.br/lumis-theme/br/com/oi/com/br/theme/oi-com-br/images/logo-header.svg" alt=""> 
+        <p class="p-logo">MINHA OI FIBRA</p>
+
+        <form role="search" id="form" autocomplete="on">
+            <div id="result"></div>
+            <input type="search" id="q" name="q" placeholder="Pesquisar..." aria-label="Search through site content" onKeyUp="showResults(this.value)">
+            <button>
+                <svg viewBox="0 0 1024 1024">
+                    <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                    </path>
+                </svg>
+            </button>
+            
+        </form>
+
+    </menu>
+
+    <div class="navbar">
+        <label for="toggle"><i class="fa fa-bars"></i> Menu</label>
+    </div>
+    
+    <div>
+        <nav>
+        <ul>
+            <li>
+                <a class="a_nav" href="https://www.oi.com.br/">Página Inicial</a>
+            </li>
+            <li>
+                <a class="a_nav" href="index.html">Cadastro</a>
+            </li>
+            <li>
+                <a class="a_nav" href="https://www.oi.com.br/minha-oi/">Minha conta</a>
+            </li>
+            <li>
+                <a class="a_nav" href="https://www.oi.com.br/faq/">Ajuda</a>
+            </li>
+            <li>
+                <a class="a_nav" href="https://www.oi.com.br/internet">Contratar plano</a>
+            </li>
+            <li>
+                <a class="a_nav" href="https://www.oi.com.br/combo/">Serviços</a>
+            </li>
+                
+        </ul>
+        </nav>
+    </div>
+
+    <div>
+        <form class="cabecalho" method="POST" action="/users">
+            <table>
+                <h1>Cadastro de formulário</h1>
+                <td>
+                    <label for="name">Nome do Relatório:</label>
+                    <br>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <br>
+                    <label for="responsable">Responsável:</label>
+                    <br>
+                    <input list="responsavel" name="responsable" id="responsa">
+
+                    <datalist id="responsable" name="responsable">
+                        <option value="Senhor Diego">
+                        <option value="Senhora Rosi">
+                        <option value="Senhor Rodrigo">
+                        <option value="Senhor José Leal">
+                    </datalist><br><br>
+
+                    <label for="relatorio" class="rellabe">Insira aqui o documento:</label><br>
+                    <input type="file" name="relatorio"><br><br>
+                </td>
+
+                <td>
+                    <label for="status">Status do formulário:</label><br>
+
+                    <select id="status" name="status" required>
+                        <option value="new" name="status">Novo</option>
+                        <option value="inprogress" name="status">Em andamento</option>
+                        <option value="completed" name="status">Finalizado</option>
+                    </select><br><br>
+
+                    <label for="Frequency">Selecione abaixo a periodicidade:</label><br>
+
+                    <input type="radio" id="once-a-day" name="frequency" value="Apenas uma vez" onchange="showOnceADay()">
+
+                    <label for="once-a-day">Apenas Uma Vez</label><br>
+
+                    <input type="radio" id="daily" name="frequency" value="Diariamente" onchange="showDaily()">
+                    <label for="daily">Diariamente</label><br>
+
+                    <input type="radio" id="weekly" name="frequency" value="Semanalmente" onchange="showWeekly()">
+                    <label for="weekly">Semanalmente</label><br>
+
+                    <input type="radio" id="monthly" name="frequency" value="Mensalmente" onchange="showMonthly()">
+                    <label for="monthly">Mensalmente</label>
+                    <br><br>
+
+                </td>
+            </table>
+
+              <!-- Parte interativa do código-->
+
+              <div id="once-a-day-content" style="display: none;">
+                <label for="once-a-day-time">Favor informar a hora:</label><br>
+                <input type="time" id="once-a-day-time" name="once-a-day-time">
+              </div>
+
+              <div id="daily-content" style="display: none;">
+                <label for="daily-time">Informe a hora:</label><br>
+                <input type="time" id="daily-time" name="daily-time"><br>
+                <label for="quantity">Repetir a cada:</label><br>
+                <input type="number" id="quantity" name="quantity" min="1" max="7"> dia(s).<br> 
+              </div>
+
+              <div id="weekly-content" style="display: none;">
+                <label for="weekly-day">Selecione o dia:</label><br>
+
+                <select id="weekly-day" name="weekly-day">
+                  <option value="monday">Segunda</option>
+                  <option value="tuesday">Terça</option>
+                  <option value="wednesday">Quarta</option>
+                  <option value="thursday">Quinta</option>
+                  <option value="friday">Sexta</option>
+                  <option value="saturday">Sábado</option>
+                  <option value="sunday">Domingo</option>
+                </select><br>
+
+                <label for="weekly-time" class="labe">Informe a hora:</label><br>
+                <input type="time" id="weekly-time" name="weekly-time"><br>
+                <label for="quantity2" class="labe">Repetir a cada:</label><br>
+                <input type="number" id="quantity2" name="quantity2" min="1" max="4"> semana(s).
+            </div>
+
+              <div id="monthly-content" style="display: none;">
+                <label for="monthly-date" class="labe">Selecione mês/dia:</label><br>
+                <input type="date" id="monthly-date" name="monthly-date" value=""><br>
+                <label for="monthly-time" class="labe">Informe a hora:</label><br>
+                <input type="time" id="monthly-time" name="monthly-time"><br>
+                <label for="quantity3" class="labe">Repetir a cada:</label><br>
+                <input type="number" id="quantity3" name="quantity3" min="1" max="48">  mês(es)
+              </div><br>
+
+              <a href="Pesquisa de relatórios.html" class="link-to-searchpage">Procurar um relatório</a>
+          <input type="submit" value="Enviar">
+        </form><br>
+
+        <hr>
+        <h2 class="net-rapida-titulo">VENHA PARA A OI FIBRA, A INTERNET MAIS RÁPIDA DO BRASIL!</h2>
+        <div class="slide-oifibra" id="slideshow-example" data-component="slideshow">
+            <div role="list">
+                <div class="slide">
+                    <img class="img-oi" src="https://static.poder360.com.br/2020/10/Oi-Brasilia-5G.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img class="img-oi" src="https://files.tecnoblog.net/wp-content/uploads/2022/04/oi-fibra-capa-tecnoblog-2-1060x596.png" alt="">
+                </div>
+                <div class="slide">
+                    <img class="img-oi" src="https://paranashop.com.br/wp-content/uploads/2022/03/xzc.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-oifibra" id="slideshow-example1" data-component="slideshow">
+            <div role="list">
+                <div class="slide">
+                    <img class="img-oi" src="https://files.tecnoblog.net/wp-content/uploads/2022/02/tb-responde_capa_divisao-da-oi.png" alt="">
+                </div>
+                <div class="slide">
+                    <img class="img-oi" src="https://teletime.com.br/wp-content/uploads/2022/04/Nova-Oi.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img class="img-oi" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJfYZmBZC7GCZ2b4OxOfgD4CCzS9tlY_RuM7OhEgTSfokHhBrkG3MUFDMO20P3nIWUYuj0Li5bqyRleBRhxUKteRhTQuULzgug7K3la9ADtYiAJelhiwNe4jK3-efew0qCjMqWymB_gIEiJ3O4CIZGyFT-ntGn9M5VmqZ5WTijjAw6bWq3kSE_oID2pQ/s1920/OI_FIBRA_HALO.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="slide-oifibra" id="slideshow-example2" data-component="slideshow">
+            <div role="list">
+                <div class="slide">
+                    <img class="img-oi" src="https://www.minhaoperadora.com.br/wp-content/uploads/2022/04/oi-fibra-ultrapassa-200-mil-clientes-goias.png" alt="">
+                </div>
+
+                <div class="slide">
+                    <img class="img-oi" src="https://badevalor.com.br/wp-content/uploads/2020/07/oi.jpg" alt="">
+                </div>
+
+                <div class="slide">
+                    <img class="img-oi" src="http://www.minhaoperadora.com.br/wp-content/uploads/2019/02/60-7.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <br>
+        <script>
+        var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+        // Aplica a todas as apresentações de slides que você define com o HTML escrito
+        slideshows.forEach(initSlideShow);
+        function initSlideShow(slideshow) {
+
+            var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Obter um array de slides
+
+            var index = 0, time = 6000;
+            slides[index].classList.add('active');
+            setInterval( () => {
+                slides[index].classList.remove('active');
+                //Passar por cada slide, incrementando o índice
+                index++;
+                // Ao passar por todos os slides, reiniciar o índice para exibir o primeiro slide e iniciar novamente
+                if (index === slides.length) index = 0;
+                slides[index].classList.add('active');
+            }, time);
+            }
+            </script>
+            
+            <footer>
+                <table class="footertab">
+                    <td class="foot">
+                        <ul>
+                            <li class="lipe">
+                                <h4>REDES SOCIAIS</h4>
+                                <P>voluptatum accusamus quos magni!</P><br><br>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="foot">
+                        <ul>
+                            <li class="lipe">
+                                <h4>MENU</h4>
+                                <P>voluptatum accusamus quos magni!</P><br><br>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="foot">
+                        <ul>
+                            <li class="lipe">
+                                <h4>SERVIÇOS</h4>
+                                <P>voluptatum accusamus quos magni!</P><br><br>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="foot">
+                        <ul>
+                            <li class="lipe">
+                                <h4>ATENDIMENTO AO CLIENTE</h4>
+                                <P>voluptatum accusamus quos magni!</P><br><br>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="foot">
+                        <ul>
+                            <li class="lipe"><h4>TRABALHE CONOSCO</h4>
+                                <P>voluptatum accusamus quos magni!</P><br><br>
+                            </li>
+                        </ul>
+                    </td>
+                </table>
+            </footer>
+        </body>
+        </html>
+        <!-- Como ler variavel de ambiente no js (%username%) -->
